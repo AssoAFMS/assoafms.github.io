@@ -64,7 +64,7 @@ input::-moz-focus-inner {
 	padding: 0;
 }
 
-input, select, textarea {
+input, select, textarea, button {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	-ms-appearance: none;
@@ -1481,14 +1481,18 @@ input, select, textarea {
 		background-image: linear-gradient(top, #e8c96a, #c9a227);
 		display: inline-block;
 		background-color: #c9a227;
-		color: #1a1108;
+		color: #1a1108 !important;
 		text-decoration: none;
 		font-size: 1.75em;
+		font-family: inherit;
 		height: 2em;
 		line-height: 2.125em;
 		font-weight: 300;
 		padding: 0 45px;
+		margin: 0;
+		border: 0;
 		outline: 0;
+		cursor: pointer;
 		border-radius: 10px;
 		box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.75), inset 0px 2px 0px 0px rgba(255, 238, 190, 0.5), inset 0px 0px 0px 2px rgba(219, 181, 90, 0.85), 3px 3px 3px 1px rgba(0, 0, 0, 0.4);
 		text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.3);
@@ -1540,10 +1544,11 @@ input, select, textarea {
 			}
 
 				#header h1 a img {
-					height: 0.62em;
-					width: 0.62em;
+					height: 1.05em;
+					width: 1.05em;
 					vertical-align: middle;
 					margin-right: 0.18em;
+					margin-top: -0.1em;
 					border-radius: 50%;
 					border: 1px solid rgba(201, 162, 39, 0.4);
 				}
@@ -1866,8 +1871,8 @@ input, select, textarea {
 				}
 
 					#titleBar .title img {
-						height: 22px;
-						width: 22px;
+						height: 30px;
+						width: 30px;
 						vertical-align: middle;
 						margin-right: 6px;
 						border-radius: 50%;
