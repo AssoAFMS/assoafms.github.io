@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="262" height="110" viewBox="0 0 262 110">
+  <rect width="262" height="110" fill="#1c1116"/>
+  <defs>
+    <radialGradient id="g4" cx="50%" cy="10%" r="90%">
+      <stop offset="0%" stop-color="#5c1120" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#1c1116" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="262" height="110" fill="url(#g4)"/>
+  <line x1="10" y1="15" x2="252" y2="15" stroke="#e8c96a" stroke-width="3"/>
+  <g fill="#e8c96a">
+    <polygon points="50,15 30,60 70,60"/>
+    <polygon points="130,15 108,60 152,60"/>
+    <polygon points="210,15 188,60 232,60"/>
+  </g>
+  <g stroke="#e8c96a" stroke-width="2" fill="none" opacity="0.7">
+    <path d="M20 85 Q 50 70 80 85"/>
+    <path d="M100 90 Q 130 68 160 90"/>
+    <path d="M180 85 Q 210 70 240 85"/>
+  </g>
+</svg>
