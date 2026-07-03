@@ -4,6 +4,10 @@ Site institutionnel statique (HTML / CSS / JS, sans dépendance de build), basé
 template **Halcyonic** (HTML5 UP) recoloré en thème sombre théâtre, hébergé gratuitement
 sur **GitHub Pages** sous le compte **AssoAFMS**, avec le domaine personnalisé `afms.info`.
 
+Dépôt : https://github.com/AssoAFMS/assoafms.github.io — nommé `<compte>.github.io`,
+ce qui en fait le site GitHub Pages principal du compte, servi nativement à
+`https://assoafms.github.io/` (le fichier `CNAME` redirige ensuite vers `afms.info`).
+
 ## Contenu
 
 - `index.html` — Accueil
@@ -19,49 +23,34 @@ sur **GitHub Pages** sous le compte **AssoAFMS**, avec le domaine personnalisé 
 - `images/` — Photos du bureau, logos des entreprises membres, illustrations SVG
 - `CNAME` — domaine personnalisé (`afms.info`)
 
-## 1. Créer le dépôt sous le compte AssoAFMS
+## 1. Dépôt — fait ✅
 
-1. Connecte-toi sur GitHub avec le compte **AssoAFMS**.
-2. Va sur https://github.com/new
-3. Nom du dépôt : `afms-website` (ou le nom de ton choix — sans impact car un domaine
-   personnalisé est utilisé).
-4. Visibilité : **Public** (obligatoire pour GitHub Pages gratuit sur un compte non-Pro,
-   sauf si le compte AssoAFMS a GitHub Pro/Team).
-5. Ne coche **aucune** case d'initialisation (pas de README/gitignore/licence) : le dépôt
-   local en a déjà.
-6. Clique **Create repository**.
-
-## 2. Pousser le code depuis cette machine
-
-Le dépôt local est déjà initialisé et commité. Il ne reste qu'à le relier au dépôt distant
-et pousser — à exécuter depuis ce dossier :
+Le dépôt `AssoAFMS/assoafms.github.io` est créé, le code est poussé sur `main`, et le
+remote local est configuré :
 
 ```bash
-git remote add origin https://github.com/AssoAFMS/afms-website.git
-git push -u origin main
+git remote -v
+# origin  https://github.com/AssoAFMS/assoafms.github.io.git (fetch)
+# origin  https://github.com/AssoAFMS/assoafms.github.io.git (push)
 ```
 
-Si `git push` demande une authentification : GitHub n'accepte plus les mots de passe en
-ligne de commande. Deux options :
+Pour un futur `git push` depuis cette machine, une authentification sera redemandée
+(GitHub n'accepte plus les mots de passe classiques) : soit `gh auth login` (compte
+AssoAFMS), soit un *Personal Access Token* utilisé comme mot de passe.
 
-- **Le plus simple** : installer `gh` (GitHub CLI) puis `gh auth login`, en te connectant
-  avec le compte AssoAFMS. Ensuite `git push -u origin main` fonctionnera normalement.
-- **Alternative** : créer un *Personal Access Token* (Settings → Developer settings →
-  Personal access tokens sur le compte AssoAFMS) et l'utiliser comme mot de passe quand
-  Git le demande.
+## 2. Activer GitHub Pages
 
-## 3. Activer GitHub Pages
+Comme le dépôt s'appelle `assoafms.github.io`, GitHub active généralement Pages
+automatiquement (branche `main`, dossier `/root`) — vérifie sur **Settings → Pages** :
 
-1. Sur le dépôt GitHub : **Settings → Pages**.
-2. Source : **Deploy from a branch**.
-3. Branche : `main`, dossier `/ (root)`.
-4. Dans le champ **Custom domain**, entre `afms.info` puis **Save**
+1. Source : **Deploy from a branch** → branche `main`, dossier `/ (root)`.
+2. Dans le champ **Custom domain**, entre `afms.info` puis **Save**
    (GitHub met à jour le fichier `CNAME` automatiquement si besoin — il existe déjà ici).
-5. Coche **Enforce HTTPS** dès que la case devient disponible (le certificat SSL est
+3. Coche **Enforce HTTPS** dès que la case devient disponible (le certificat SSL est
    généré automatiquement par GitHub après validation du domaine, ça peut prendre
    quelques minutes à quelques heures).
 
-## 4. Configurer le DNS chez le registrar du domaine afms.info
+## 3. Configurer le DNS chez le registrar du domaine afms.info
 
 Domaine choisi : **apex `afms.info`** (recommandé par GitHub). Chez le registrar/DNS
 actuel du domaine (là où sont gérés les enregistrements DNS d'afms.info), remplace les
