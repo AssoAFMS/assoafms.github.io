@@ -2,11 +2,16 @@
 
 Site institutionnel statique (HTML / CSS / JS, sans dépendance de build), basé sur le
 template **Halcyonic** (HTML5 UP) recoloré en thème sombre théâtre, hébergé gratuitement
-sur **GitHub Pages** sous le compte **AssoAFMS**, avec le domaine personnalisé `afms.info`.
+sur **GitHub Pages** sous le compte **AssoAFMS**.
 
 Dépôt : https://github.com/AssoAFMS/assoafms.github.io — nommé `<compte>.github.io`,
 ce qui en fait le site GitHub Pages principal du compte, servi nativement à
-`https://assoafms.github.io/` (le fichier `CNAME` redirige ensuite vers `afms.info`).
+`https://assoafms.github.io/`.
+
+**Domaine personnalisé (`afms.info`) : pas encore activé.** Le champ "Custom domain" a
+été volontairement laissé vide dans Settings → Pages pour l'instant. Le site reste donc
+uniquement accessible via `assoafms.github.io` tant que ce choix n'est pas revu (voir
+section « Activer le domaine personnalisé plus tard » ci-dessous).
 
 ## Contenu
 
@@ -21,7 +26,6 @@ ce qui en fait le site GitHub Pages principal du compte, servi nativement à
 - `assets/js/` — jQuery + scripts du template (menu mobile "tiroir" natif)
 - `assets/images/logo.png` — Logo AFMS
 - `images/` — Photos du bureau, logos des entreprises membres, illustrations SVG
-- `CNAME` — domaine personnalisé (`afms.info`)
 
 ## 1. Dépôt — fait ✅
 
@@ -38,55 +42,24 @@ Pour un futur `git push` depuis cette machine, une authentification sera redeman
 (GitHub n'accepte plus les mots de passe classiques) : soit `gh auth login` (compte
 AssoAFMS), soit un *Personal Access Token* utilisé comme mot de passe.
 
-## 2. Activer GitHub Pages
+## 2. Activer le domaine personnalisé plus tard (optionnel)
 
-Comme le dépôt s'appelle `assoafms.github.io`, GitHub active généralement Pages
-automatiquement (branche `main`, dossier `/root`) — vérifie sur **Settings → Pages** :
+Le site tourne pour l'instant uniquement sur `assoafms.github.io`. Quand la décision sera
+prise de basculer `afms.info` dessus :
 
-1. Source : **Deploy from a branch** → branche `main`, dossier `/ (root)`.
-2. Dans le champ **Custom domain**, entre `afms.info` puis **Save**
-   (GitHub met à jour le fichier `CNAME` automatiquement si besoin — il existe déjà ici).
-3. Coche **Enforce HTTPS** dès que la case devient disponible (le certificat SSL est
-   généré automatiquement par GitHub après validation du domaine, ça peut prendre
-   quelques minutes à quelques heures).
+1. Recréer le fichier `CNAME` à la racine du dépôt avec `afms.info` dedans (ou le remettre
+   directement depuis **Settings → Pages → Custom domain**, GitHub le recrée pour toi).
+2. Chez le registrar/DNS du domaine `afms.info`, remplacer les enregistrements existants
+   (ceux pointant vers WordPress.com) par les 4 enregistrements A GitHub Pages sur `@` :
+   `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, plus un
+   CNAME `www` → `AssoAFMS.github.io` pour que `www.afms.info` fonctionne aussi.
+3. Cocher **Enforce HTTPS** dans Settings → Pages une fois le domaine validé (le certificat
+   SSL est généré automatiquement par GitHub, ça peut prendre de quelques minutes à
+   quelques heures après la propagation DNS).
 
-## 3. Configurer le DNS chez le registrar du domaine afms.info
-
-Domaine choisi : **apex `afms.info`** (recommandé par GitHub). Chez le registrar/DNS
-actuel du domaine (là où sont gérés les enregistrements DNS d'afms.info), remplace les
-enregistrements existants (ceux pointant vers WordPress.com) par :
-
-**4 enregistrements A sur `@` / racine (`afms.info`) :**
-
-| Type | Nom | Valeur           |
-|------|-----|-------------------|
-| A    | @   | 185.199.108.153   |
-| A    | @   | 185.199.109.153   |
-| A    | @   | 185.199.110.153   |
-| A    | @   | 185.199.111.153   |
-
-**Optionnel (IPv6) — 4 enregistrements AAAA sur `@` :**
-
-| Type | Nom | Valeur                    |
-|------|-----|----------------------------|
-| AAAA | @   | 2606:50c0:8000::153        |
-| AAAA | @   | 2606:50c0:8001::153        |
-| AAAA | @   | 2606:50c0:8002::153        |
-| AAAA | @   | 2606:50c0:8003::153        |
-
-**1 enregistrement CNAME pour `www` (pour que `www.afms.info` redirige aussi vers le site) :**
-
-| Type  | Nom | Valeur                |
-|-------|-----|------------------------|
-| CNAME | www | AssoAFMS.github.io     |
-
-Supprime tout enregistrement A/CNAME/MX-conflictuel existant pointant vers l'ancien
-hébergeur WordPress.com pour `@` et `www` (garde les enregistrements liés aux emails,
-type MX/TXT, si l'association utilise des adresses @afms.info par ailleurs — à vérifier
-avant de tout supprimer).
-
-La propagation DNS peut prendre de quelques minutes à 24-48h. Une fois propagée, GitHub
-détecte automatiquement le domaine et délivre le certificat HTTPS.
+⚠️ Si l'association utilise des adresses email @afms.info, ne pas toucher aux
+enregistrements MX/TXT existants — seuls les A/CNAME pointant vers l'hébergement web
+doivent être remplacés.
 
 ## Formulaire de contact
 
